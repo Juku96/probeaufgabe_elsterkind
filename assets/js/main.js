@@ -11,17 +11,20 @@ for( let i=0; i < Object.keys(krankenkassen).length; i++) {
 
 // Wird beim ändern der SelectBox aufgerufen
 function onChangeKrankenkasse() {
-    const starterElem = document.querySelector('.title');
-    const refundCircleContainer = document.querySelector('.output-container .payment');
-    const refundPercentageContainer = document.querySelector('.refund-percentage');
+    let starterElem = document.querySelector('.title');
+    let circleContainer = document.querySelector('.circle-container');
+    let refundPercentageContainer = document.querySelector('.refund-percentage');
 
-    const outputPercentage = document.querySelector('.output-container .output-percentage');
-    const outputPrice = document.querySelector('.output-container .output-price');
-    const refund = krankenkassen[selectbox.selectedIndex-1].getRefund(kurspreis);
+    let outputPercentage = document.querySelector('.output-container .output-percentage');
+    let outputPrice = document.querySelector('.output-container .output-price');
+    let refund = krankenkassen[selectbox.selectedIndex-1].getRefund(kurspreis);
+    let circle = document.querySelector("#first-circle");
 
     refundPercentageContainer.style.display = 'block';
     starterElem.style.display = 'none';
-    refundCircleContainer.style.display = 'block'
+    circleContainer.style.display = 'block'
+
     outputPercentage.innerHTML = refund.refund_percentage * 100 + "%";
     outputPrice.innerHTML = refund.payment + "€";
+    circle.style.strokeDashoffset = 628 - 628 * refund.refund_percentage;
 }

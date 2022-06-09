@@ -8,6 +8,10 @@
 body {
     background-color: #23CCA5;
     color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 p {
@@ -43,6 +47,7 @@ p {
         .refund-percentage {
             margin-bottom: 20px;
             display: none;
+            font-size: 20px;
         }
         
         .outer-circle {
@@ -56,20 +61,65 @@ p {
             align-items: center;
             position: relative;
 
-            .payment {
-                display: none;
-            }
             .title {
                 font-size: 35px;
                 padding: 45px;
                 font-weight: 700;
             }
             .text {
-                font-size: 22px;
+                font-size: 17px;
             }
             .output-price {
-                font-size: 75px;
+                font-size: 60px;
             }
+        }
+    }
+
+    .circle-container {
+        width: 220px;
+        height: 220px;
+        position: relative;
+        display: none;
+
+        .outer {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            padding: 20px;
+        }
+        .inner {
+            height: 180px;
+            width: 180px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        circle {
+            fill: none;
+            // stroke: url(#GradientColor);
+            stroke-width: 20px;
+            stroke-dasharray: 628;
+            stroke-dashoffset: 628;
+            transform: rotate(-90deg) translate(-160px, 0px);
+            transition: stroke-dashoffset 2s;
+        }
+        #first-circle {
+            stroke: #FAFAFA;
+            stroke-dasharray: 628;
+            stroke-dashoffset: 628;
+        }
+        #second-circle {
+            stroke: #5cd63d;
+            stroke-dasharray: 628;
+            stroke-dashoffset: 0;
+            transform: rotate(-90deg) translate(-160px, 0px);
+        }
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     }
 }
