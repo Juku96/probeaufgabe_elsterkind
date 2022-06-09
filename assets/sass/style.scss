@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #23CCA5;
+    color: white;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 60%;
+    margin: 150px auto;
+
+    h1 {
+        text-align: center;
+    }
+
+    .info-text {
+        width: 60%;
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .input-container, .output-container {
+        margin: 50px auto;
+        text-align: center;
+        form {
+            text-align: center;
+        }
+    }
+
+    .output-container {
+        font-size: 30px;
+
+        .refund-percentage {
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .outer-circle {
+            border: solid 3px;
+            margin: auto;
+            border-radius: 50%;
+            height: 250px;
+            width: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            .payment {
+                display: none;
+            }
+            .title {
+                font-size: 35px;
+                padding: 45px;
+                font-weight: 700;
+            }
+            .text {
+                font-size: 22px;
+            }
+            .output-price {
+                font-size: 75px;
+            }
+        }
+    }
+}
