@@ -12,3 +12,6 @@ const krankenkassen = {
     9: new Krankenkasse("Viactiv BKK","0.37"), 
     10: new Krankenkasse("Continentale Betriebskrankenkasse", "0.45")
 }
+
+const refund = krankenkassen[0].getRefund(kurspreis);
+console.log(refund);
