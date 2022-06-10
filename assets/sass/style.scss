@@ -36,6 +36,8 @@ p {
     .input-container, .output-container {
         margin: 50px auto;
         text-align: center;
+        position: relative;
+
         form {
             text-align: center;
         }
@@ -125,11 +127,25 @@ p {
 
     #select-input {
         font-size: 18px;
+        max-width: 500px;
+        margin: auto;
 
         .btn-group {
-            display: flex;
+            display: none;
             justify-content: center;
             margin: 20px auto;
+            position: absolute;
+            top: -80px;
+            left: 0;
+            right: 0;
+
+            &:hover {
+                display: flex;
+            }
+
+            &.active {
+                display: flex;
+            }
 
             button {
                 background-color: #fff;
@@ -146,13 +162,51 @@ p {
             }
         }
 
-        .select-box {
-            padding: 5px 40px;
-            text-align: center;
-            border-radius: 15px;
-            border: 3px solid #fff;
-            position: relative;
+        .krankenkassen-liste {
+            display: none;
+            list-style: none;
+            background-color: #fff;
+            width: 50%;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -260px;
+            color: #000;
+            text-align: initial;
+            padding: 10px;
 
+            li {
+                cursor: pointer;
+            }
+        }
+
+        .select-box-wrapper {
+            width: 70%;
+            position: relative;
+            justify-content: center;
+            margin: auto;
+
+            .fa {
+                color: #000;
+                position: absolute;
+                left: 10px;
+                top: 7px;
+            }
+
+            .select-box {
+                padding: 5px 40px;
+                text-align: center;
+                border-radius: 15px;
+                border: 3px solid #fff;
+                display: inline-block;
+                width: 100%;
+
+                option {
+                    visibility: hidden;
+                    display: none;
+                }
+            }
         }
     }
 }
