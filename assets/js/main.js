@@ -1,6 +1,7 @@
 let selectbox;
 let buttons;
 let krankenkassenList;
+let textInput;
 
 window.onload = function () {
     selectbox = document.querySelector('#select-input select');
@@ -21,9 +22,9 @@ window.onload = function () {
             if(this.name == 'andere') {
                 return;
             }
-            selectbox.value = this.name;
+            textInput.value = this.name;
             btnGroup.classList.remove('active');
-            onChangeKrankenkasse();
+            onChangeKrankenkasse(i);
         });
     }
 
@@ -32,38 +33,65 @@ window.onload = function () {
         // Ich wollte erst ein Selected bei dem ersten Element einfügen und hab vergessen dann die if-Verzeigung zu entfernen 
 
         krankenkassenList.innerHTML += "<li class='krankenkassen-item' data-name='"+krankenkassen[i].name+"'>"+krankenkassen[i].name+"</li>";
-        selectbox.innerHTML += "<option>"+ krankenkassen[i].name +"</option>";
+        //selectbox.innerHTML += "<option>"+ krankenkassen[i].name +"</option>";
     }
 
     let krankenkassenItems = document.querySelectorAll('.krankenkassen-item');
 
     for( let i=0; i< krankenkassenItems.length; i++) {
         krankenkassenItems[i].addEventListener("click", function(e) {
-            selectbox.value = this.dataset.name;
-            onChangeKrankenkasse();
+            textInput.value = this.dataset.name;
+            onChangeKrankenkasse(i);
             krankenkassenList.style.display = 'none';
         })
     }
 
-    selectbox.addEventListener("focus", function() {
+    textInput = document.querySelector('#text-input');
+    textInput.addEventListener("input", function(e) {
+        var val = this.value;
+
+        krankenkassenList.innerHTML = '';
+
+        for (let i = 0; i < Object.keys(krankenkassen).length; i++) {
+            let krankenkasse = krankenkassen[i].name;
+            console.log(krankenkasse);
+            
+            if (krankenkasse.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                
+                a = document.createElement("li");
+                a.classList.add('krankenkassen-item');
+                a.dataset.name = krankenkasse;
+                a.innerHTML += krankenkasse;
+                krankenkassenList.append(a);
+                
+                a.addEventListener("click", function(e) {
+                    textInput.value = krankenkassen[i].name;
+                    onChangeKrankenkasse(i);
+                    krankenkassenList.style.display = 'none';
+                });
+                showKrankenkassenList();
+            }
+        }
+    });
+
+    textInput.addEventListener("focus", function() {
         btnGroup.classList.toggle('active');
     });
 
-    selectbox.addEventListener("focusout", function() {
+    textInput.addEventListener("focusout", function() {
         btnGroup.classList.remove('active');
     });
-
 }
 
 // Wird beim ändern der SelectBox aufgerufen
-function onChangeKrankenkasse() {
+function onChangeKrankenkasse(id) {
     let starterElem = document.querySelector('.title');
     let circleContainer = document.querySelector('.circle-container');
     let refundPercentageContainer = document.querySelector('.refund-percentage');
 
     let outputPercentage = document.querySelector('.output-container .output-percentage');
     let outputPrice = document.querySelector('.output-container .output-price');
-    let refund = krankenkassen[selectbox.selectedIndex-1].getRefund(kurspreis);
+    let refund = krankenkassen[id].getRefund(kurspreis);
     let circle = document.querySelector("#first-circle");
 
     refundPercentageContainer.style.display = 'block';
@@ -76,5 +104,6 @@ function onChangeKrankenkasse() {
 }
 
 function showKrankenkassenList() {
+    textInput.value = '';
     krankenkassenList.style.display = 'block';
 }
