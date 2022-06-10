@@ -44,12 +44,18 @@
         </div>
         <div class="input-container">
             <form id="select-input">
-                <select id="select-input" onchange="onChangeKrankenkasse()">
+                <div class="btn-group">
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                    <button name="andere" >Andere</button>
+                </div>
+
+                <select class="select-box" onchange="onChangeKrankenkasse()">
                     <option disabled="disabled" selected>Bitte Krankenkasse auswählen</option>
                 </select>
             </form>
         </div>
-
     </div>
 
     <script src="./assets/js/Krankenkasse.js"></script>

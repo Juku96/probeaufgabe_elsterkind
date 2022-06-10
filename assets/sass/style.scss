@@ -111,7 +111,7 @@ p {
             stroke-dashoffset: 628;
         }
         #second-circle {
-            stroke: #5cd63d;
+            stroke: #e0392d;
             stroke-dasharray: 628;
             stroke-dashoffset: 0;
             transform: rotate(-90deg) translate(-160px, 0px);
@@ -120,6 +120,39 @@ p {
             position: absolute;
             top: 0;
             left: 0;
+        }
+    }
+
+    #select-input {
+        font-size: 18px;
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            margin: 20px auto;
+
+            button {
+                background-color: #fff;
+                border: 1px solid #fff;
+                padding: 10px 24px;
+                cursor: pointer;
+
+                &:first-child {
+                    border-radius: 5px 0 0 5px;
+                }
+                &:last-child {
+                    border-radius: 0 5px 5px 0;
+                }
+            }
+        }
+
+        .select-box {
+            padding: 5px 40px;
+            text-align: center;
+            border-radius: 15px;
+            border: 3px solid #fff;
+            position: relative;
+
         }
     }
 }
